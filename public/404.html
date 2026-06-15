@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/links.html">Links</a>
+        </nav>
+    </header>
+
+    <main class="about-container" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <h2 class="section-title">404 - Not Found</h2>
+        <p class="subheadline" style="margin-bottom: var(--space-lg);">You took a wrong turn!</p>
+        
+        <div class="game-container">
+            <canvas id="snake-canvas" width="400" height="400"></canvas>
+            <div id="game-overlay" class="game-overlay hidden">
+                <h3 id="game-over-text">Game Over!</h3>
+                <p>Score: <span id="final-score">0</span></p>
+                <button id="restart-btn" class="brutal-btn">Try Again</button>
+            </div>
+            <p class="game-score">Score: <span id="current-score">0</span></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>I'm like hey what's up hello</p>
+    </footer>
+
+    <script src="/snake.js"></script>
+</body>
+</html>
