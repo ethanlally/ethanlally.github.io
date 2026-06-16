@@ -3,7 +3,7 @@ export async function onRequest(context) {
   const accept = request.headers.get("Accept") || "";
 
   // If the agent specifically requests markdown
-  if (accept.includes("text/markdown")) {
+  if (accept.toLowerCase().includes("text/markdown")) {
     const response = await next();
     
     // Only intercept HTML responses
@@ -11,16 +11,21 @@ export async function onRequest(context) {
     if (contentType.includes("text/html")) {
       const html = await response.text();
       
-      // Super basic HTML to Markdown extraction
-      let markdown = html
-        .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, '')
-        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
-      
-      markdown = markdown.replace(/<[^>]+>/g, ' ');
-      markdown = markdown.replace(/\s+/g, ' ').trim();
-      
-      markdown = "# Ethan Lally Portfolio\n\n" + markdown;
+      const markdown = `# Ethan Lally - Portfolio
+
+Welcome to my portfolio! I am an aspiring developer.
+
+## About Me
+I am a student at the University of Dayton studying computer science.
+
+## Projects
+- **Portfolio Website**: Built with Angular and hosted on Cloudflare Pages.
+
+## Contact
+- **Email (Personal)**: ejlally05@gmail.com
+- **Email (School)**: lallye4@udayton.edu
+- **Domain**: lally.lol
+- **GitHub**: ethanlally`;
       
       return new Response(markdown, {
         headers: {
