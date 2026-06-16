@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://lally.lol",
+      "service-desc": [
+        {
+          "href": "https://lally.lol/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://lally.lol/docs/api",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://lally.lol/status",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

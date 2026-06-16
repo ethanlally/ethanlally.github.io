@@ -1,0 +1,7 @@
+{
+  "resource": "https://lally.lol",
+  "authorization_servers": [
+    "https://lally.lol"
+  ],
+  "scopes_supported": []
+}

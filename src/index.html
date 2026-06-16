@@ -9,6 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <script>
+    if (navigator.modelContext && navigator.modelContext.provideContext) {
+      navigator.modelContext.provideContext({
+        tools: [
+          {
+            name: "getContactInfo",
+            description: "Retrieve contact information for Ethan Lally.",
+            inputSchema: { type: "object", properties: {} },
+            execute: async () => {
+              return { content: "You can find Ethan's links at https://lally.lol/links or reach out on GitHub." };
+            }
+          }
+        ]
+      });
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>

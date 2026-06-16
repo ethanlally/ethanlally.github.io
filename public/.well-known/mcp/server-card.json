@@ -1,0 +1,11 @@
+{
+  "serverInfo": {
+    "name": "ethan-portfolio-mcp",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://lally.lol/mcp"
+  },
+  "capabilities": {}
+}

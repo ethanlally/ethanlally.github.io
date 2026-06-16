@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/agent-skills.json",
+  "skills": [
+    {
+      "name": "portfolio_navigation",
+      "type": "webmcp",
+      "description": "Exposes portfolio navigation tools to the agent via WebMCP.",
+      "url": "https://lally.lol",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
