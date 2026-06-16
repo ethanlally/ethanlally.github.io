@@ -12,18 +12,14 @@ export async function onRequest(context) {
       const html = await response.text();
       
       // Super basic HTML to Markdown extraction
-      // Strip head, scripts, styles
       let markdown = html
         .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, '')
         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
         .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
       
-      // Strip remaining HTML tags
       markdown = markdown.replace(/<[^>]+>/g, ' ');
-      // Normalize whitespace
       markdown = markdown.replace(/\s+/g, ' ').trim();
       
-      // Add a header
       markdown = "# Ethan Lally Portfolio\n\n" + markdown;
       
       return new Response(markdown, {
@@ -34,9 +30,7 @@ export async function onRequest(context) {
       });
     }
     
-    // Return original response if not HTML (or if body already consumed)
-    // Wait, the above logic consumes the body. If it wasn't HTML, we shouldn't have consumed it.
-    // That's why we checked contentType first.
+    return response;
   }
   
   return next();
