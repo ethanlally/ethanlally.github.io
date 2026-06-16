@@ -1,4 +1,4 @@
-# Agent Authentication
+# Auth.md
 
 The skills and endpoints advertised on this domain (`lally.lol`) are entirely public and require **no authentication or authorization** from AI agents.
 
