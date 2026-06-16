@@ -54,6 +54,18 @@ body {
   flex-direction: column;
 }
 
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+app-home, app-about, app-links, app-not-found {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 a {
   color: var(--accent-secondary);
   text-decoration: none;

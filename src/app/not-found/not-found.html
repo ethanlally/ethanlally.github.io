@@ -1,0 +1,14 @@
+<main class="about-container" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <h2 class="section-title">404 - Not Found</h2>
+    <p class="subheadline" style="margin-bottom: var(--space-lg);">You took a wrong turn!</p>
+    
+    <div class="game-container">
+        <canvas #snakeCanvas id="snake-canvas" width="400" height="400"></canvas>
+        <div id="game-overlay" class="game-overlay" [class.hidden]="!isGameOver">
+            <h3>Game Over!</h3>
+            <p>Score: <span>{{ score }}</span></p>
+            <button (click)="resetGame()" class="brutal-btn">Try Again</button>
+        </div>
+        <p class="game-score">Score: <span>{{ score }}</span></p>
+    </div>
+</main>

@@ -1,0 +1,25 @@
+<h2 class="section-title" style="margin-top: 3rem;">Recent GitHub Activity</h2>
+<div class="card-grid">
+  @if (repos$ | async; as repos) {
+    @for (repo of repos; track repo.id) {
+      <a [href]="repo.html_url" target="_blank" rel="noopener noreferrer" class="brutal-card">
+        <div class="card-header">
+            <h3 class="card-title">{{ repo.name }}</h3>
+            <p class="card-subtitle">
+                @if (repo.language) {
+                  <span style="color: #1ca6a6;">{{ repo.language }}</span> • 
+                }
+                ⭐ {{ repo.stargazers_count }}
+            </p>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>{{ repo.description || 'No description provided.' }}</li>
+            </ul>
+        </div>
+      </a>
+    }
+  } @else {
+    <p>Loading GitHub data...</p>
+  }
+</div>
