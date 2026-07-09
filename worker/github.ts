@@ -10,11 +10,18 @@ export async function onRequest(context: any) {
   let response = null;
 
   if (!isLocal && cache) {
-    response = await cache.match(cacheKey);
-  }
-
-  if (response) {
-    return response;
+    let cached = await cache.match(cacheKey);
+    if (cached) {
+      return new Response(cached.body, {
+        status: cached.status,
+        headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        }
+      });
+    }
   }
 
   try {
@@ -29,21 +36,27 @@ export async function onRequest(context: any) {
         throw new Error(`GitHub API responded with status: ${githubResponse.status}`);
     }
 
-    const repos = await githubResponse.json();
+    const data = await githubResponse.json();
 
-    response = new Response(JSON.stringify(repos), {
-        status: 200,
-        headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, s-maxage=3600, max-age=0, must-revalidate',
-            'Date': new Date().toUTCString()
-        }
+    const cacheResponse = new Response(JSON.stringify(data), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'max-age=3600'
+      }
     });
 
-    // 3. Save to Edge Cache
-    context.waitUntil(cache.put(cacheKey, response.clone()));
+    context.waitUntil(cache.put(cacheKey, cacheResponse.clone()));
 
-    return response;
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
+    });
 
   } catch (error: any) {
     return new Response(JSON.stringify({ error: error.message || 'Unknown error' }), {
