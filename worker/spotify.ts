@@ -61,7 +61,8 @@ export async function onRequest(context: any) {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-      signal: AbortSignal.timeout(5000)
+      signal: AbortSignal.timeout(5000),
+      cache: 'no-store'
     });
 
     let jsonResponse;

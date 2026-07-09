@@ -33,7 +33,7 @@ export class SpotifyComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = timer(0, 15000).pipe(
-      switchMap(() => this.http.get<SpotifyData>('/api/spotify').pipe(
+      switchMap(() => this.http.get<SpotifyData>(`/api/spotify?bust=${Date.now()}`).pipe(
         catchError((err: any) => of({ isPlaying: false, error: err.message } as SpotifyData))
       ))
     ).subscribe((res: SpotifyData) => {

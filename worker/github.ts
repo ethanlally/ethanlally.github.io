@@ -27,9 +27,11 @@ export async function onRequest(context: any) {
   try {
     const githubResponse = await fetch('https://api.github.com/users/ethanlally/repos?sort=updated&per_page=5', {
       headers: {
-        'User-Agent': 'Cloudflare-Worker'
+        'User-Agent': 'ethanlally-portfolio',
+        'Accept': 'application/vnd.github.v3+json'
       },
-      signal: AbortSignal.timeout(5000)
+      signal: AbortSignal.timeout(5000),
+      cache: 'no-store'
     });
 
     if (!githubResponse.ok) {

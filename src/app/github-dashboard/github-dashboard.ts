@@ -11,7 +11,7 @@ import { catchError } from 'rxjs';
 })
 export class GithubDashboardComponent {
   http = inject(HttpClient);
-  repos$ = this.http.get<any[]>('/api/github').pipe(
+  repos$ = this.http.get<any[]>(`/api/github?bust=${Date.now()}`).pipe(
     catchError(() => this.http.get<any[]>('https://api.github.com/users/ethanlally/repos?sort=updated&per_page=5'))
   );
 }
