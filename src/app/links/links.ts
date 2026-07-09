@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { GithubDashboardComponent } from '../github-dashboard/github-dashboard';
 
 @Component({
   selector: 'app-links',
-  imports: [GithubDashboardComponent],
+  imports: [],
   templateUrl: './links.html',
   styleUrl: './links.css',
 })

@@ -1,0 +1,39 @@
+@if (data) {
+  <div class="spotify-card brutal-card">
+    <div class="spotify-header">
+      <h3 class="card-title">
+        @if (data.isPlaying) {
+          <span class="pulse-dot"></span> Currently Listening
+        } @else {
+          Spotify
+        }
+      </h3>
+    </div>
+    
+    <div class="card-body">
+      @if (data.isPlaying && !data.error) {
+        <a [href]="data.songUrl" target="_blank" rel="noopener noreferrer" class="spotify-content">
+          <img [src]="data.albumImageUrl" [alt]="data.album" class="album-art" />
+          <div class="track-info">
+            <p class="track-title">{{ data.title }}</p>
+            <p class="track-artist">{{ data.artist }}</p>
+            
+            @if (data.duration_ms) {
+              <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="(currentProgress / data.duration_ms) * 100"></div>
+              </div>
+            }
+          </div>
+        </a>
+      } @else if (data.error) {
+        <p class="spotify-inactive">{{ data.error }}</p>
+      } @else {
+        <p class="spotify-inactive">Not playing anything right now.</p>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="spotify-card brutal-card loading-skeleton">
+    <p>Loading Spotify...</p>
+  </div>
+}

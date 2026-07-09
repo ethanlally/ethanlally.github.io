@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ethanlally",
   "compatibility_date": "2026-04-08",
+  "main": "worker/index.ts",
   "observability": {
     "enabled": true
   },

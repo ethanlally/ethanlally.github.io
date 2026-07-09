@@ -60,7 +60,7 @@ app-root {
   flex: 1;
 }
 
-app-home, app-about, app-links, app-not-found {
+app-home, app-about, app-links, app-activity, app-not-found {
   display: flex;
   flex-direction: column;
   flex: 1;
