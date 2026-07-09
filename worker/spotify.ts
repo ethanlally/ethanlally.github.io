@@ -2,6 +2,7 @@ export async function onRequest(context: any) {
   const { request, env } = context;
 
   const cacheUrl = new URL(request.url);
+  cacheUrl.searchParams.set('v', '2');
   const cacheKey = new Request(cacheUrl.toString(), request);
   const cache = (caches as any).default;
   
@@ -83,7 +84,8 @@ export async function onRequest(context: any) {
         status: 200,
         headers: {
             'Content-Type': 'application/json',
-            'Cache-Control': 'public, s-maxage=15, max-age=0, must-revalidate'
+            'Cache-Control': 'public, s-maxage=15, max-age=0, must-revalidate',
+            'Date': new Date().toUTCString()
         }
     });
 
