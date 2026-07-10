@@ -6,8 +6,12 @@
   "response_types_supported": ["code"],
   "grant_types_supported": ["authorization_code", "client_credentials"],
   "agent_auth": {
+    "skill": "https://lally.lol/auth.md",
     "register_uri": "https://lally.lol/auth.md",
-    "supported_identity_types": ["anonymous"],
-    "supported_credential_types": ["none"]
+    "identity_types_supported": ["anonymous"],
+    "anonymous": {
+      "credential_types_supported": ["none"],
+      "claim_uri": "https://lally.lol/auth.md"
+    }
   }
 }

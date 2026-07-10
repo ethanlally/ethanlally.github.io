@@ -1,0 +1,25 @@
+{
+  "name": "Ethan Lally Portfolio",
+  "version": "1.0.0",
+  "description": "Provides public contact information for Ethan Lally.",
+  "supportedInterfaces": [
+    {
+      "url": "https://lally.lol/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "contact-information",
+      "name": "Get contact information",
+      "description": "Returns public contact links for Ethan Lally.",
+      "tags": ["contact", "portfolio"],
+      "examples": ["How can I contact Ethan?"]
+    }
+  ]
+}

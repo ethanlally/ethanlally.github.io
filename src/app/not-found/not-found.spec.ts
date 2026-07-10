@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { vi } from 'vitest';
 
 import { NotFoundComponent } from './not-found';
 
@@ -7,6 +8,11 @@ describe('NotFoundComponent', () => {
   let fixture: ComponentFixture<NotFoundComponent>;
 
   beforeEach(async () => {
+    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({
+      fillStyle: '',
+      fillRect: vi.fn(),
+    } as unknown as CanvasRenderingContext2D);
+
     await TestBed.configureTestingModule({
       imports: [NotFoundComponent],
     }).compileComponents();
@@ -18,5 +24,9 @@ describe('NotFoundComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 });

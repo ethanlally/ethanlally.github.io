@@ -1,4 +1,4 @@
-@if (data) {
+@if (isWorkerHosted && data) {
   <div class="spotify-card brutal-card">
     <div class="spotify-header">
       <h3 class="card-title">
@@ -32,7 +32,7 @@
       }
     </div>
   </div>
-} @else {
+} @else if (isWorkerHosted) {
   <div class="spotify-card brutal-card loading-skeleton">
     <p>Loading Spotify...</p>
   </div>

@@ -2,15 +2,15 @@ export async function onRequest(context: any) {
   const { request, env } = context;
 
   const cacheUrl = new URL(request.url);
-  cacheUrl.searchParams.set('v', '2');
-  const cacheKey = new Request(cacheUrl.toString(), request);
+  cacheUrl.search = '';
+  cacheUrl.searchParams.set('v', '3');
+  const cacheKey = new Request(cacheUrl.toString());
   const cache = (caches as any).default;
 
   const isLocal = cacheUrl.hostname === 'localhost' || cacheUrl.hostname === '127.0.0.1';
-  let response = null;
 
   if (!isLocal && cache) {
-    let cached = await cache.match(cacheKey);
+    const cached = await cache.match(cacheKey);
     if (cached) {
       return new Response(cached.body, {
         status: cached.status,
@@ -44,7 +44,7 @@ export async function onRequest(context: any) {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'max-age=3600'
+        'Cache-Control': 's-maxage=3600'
       }
     });
 

@@ -24,6 +24,7 @@ interface SpotifyData {
 export class SpotifyComponent implements OnInit, OnDestroy {
   http = inject(HttpClient);
   cdr = inject(ChangeDetectorRef);
+  readonly isWorkerHosted = globalThis.location.hostname === 'lally.lol';
   
   data: SpotifyData | null = null;
   currentProgress = 0;
@@ -32,14 +33,20 @@ export class SpotifyComponent implements OnInit, OnDestroy {
   private tickInterval: any;
 
   ngOnInit() {
-    this.sub = timer(0, 15000).pipe(
-      switchMap(() => this.http.get<SpotifyData>(`/api/spotify?bust=${Date.now()}`).pipe(
+    if (!this.isWorkerHosted) {
+      return;
+    }
+
+    this.sub = timer(0, 10000).pipe(
+      switchMap(() => this.http.get<SpotifyData>('/api/spotify').pipe(
         catchError((err: any) => of({ isPlaying: false, error: err.message } as SpotifyData))
       ))
     ).subscribe((res: SpotifyData) => {
       this.data = res;
       if (res.isPlaying && res.progress_ms !== undefined && res.fetchedAt) {
         this.currentProgress = res.progress_ms + (Date.now() - res.fetchedAt);
+      } else {
+        this.currentProgress = 0;
       }
       this.cdr.markForCheck();
     });
