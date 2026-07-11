@@ -39,6 +39,15 @@ export class AnnikaComponent implements OnDestroy {
     'You make me so happy',
     'I still get excited every time I see you',
     'Every day with you is a good day',
+    'You are perfect',
+    'You are worth it',
+    'Keep pushing through even when it is hard',
+    'You are capable of anything',
+    'I am so incredibly lucky that you are in my life',
+    'You are my favorite person in the world',
+    'I am so proud of you',
+    'I am so incredibly proud of you',
+    'You are worth it',
   ];
 
   readonly randomMessage = signal('');
