@@ -4,11 +4,13 @@ import { About } from './about/about';
 import { Links } from './links/links';
 import { ActivityComponent } from './activity/activity';
 import { NotFoundComponent } from './not-found/not-found';
+import { AnnikaComponent } from './annika/annika';
 
 export const routes: Routes = [
-    { path: '', component: Home },
-    { path: 'about', component: About },
-    { path: 'links', component: Links },
-    { path: 'activity', component: ActivityComponent },
-    { path: '**', component: NotFoundComponent }
+  { path: '', component: Home },
+  { path: 'about', component: About },
+  { path: 'links', component: Links },
+  { path: 'activity', component: ActivityComponent },
+  { path: 'annika', component: AnnikaComponent },
+  { path: '**', component: NotFoundComponent },
 ];

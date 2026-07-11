@@ -9,3 +9,6 @@
 
 /.well-known/api-catalog
   Content-Type: application/linkset+json
+
+/annika
+  X-Robots-Tag: noindex, nofollow

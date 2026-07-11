@@ -1,0 +1,40 @@
+<main class="annika-page" aria-labelledby="annika-heading">
+  <article class="letter">
+    <p class="eyebrow">for annika</p>
+    <div class="rule" aria-hidden="true"></div>
+
+    <h1 id="annika-heading">Annika,</h1>
+    <p class="opening">I love you so so so much.</p>
+
+    <div class="message">
+      <p>
+        Life is better with you in it. You are so perfect even if you do not realize it, and I'm
+        grateful for every moment we get to share. I hope whenever you visit this page, you are reminded of how much I love you and how much you mean to me.
+      </p>
+      <p>I cannot wait to spend the rest of our lives together.</p>
+    </div>
+
+    <footer class="signature">
+      <span>Love,</span>
+      <strong>Ethan</strong>
+    </footer>
+
+    <div class="love-reminder">
+      <p class="love-message" aria-live="polite">
+        @if (randomMessage()) {
+          {{ randomMessage() }}
+        } @else {
+          <span class="love-prompt" aria-hidden="true">press the heart for a reminder</span>
+        }
+      </p>
+      <button
+        class="heart-button"
+        type="button"
+        aria-label="Show another love note"
+        (click)="showRandomMessage()"
+      >
+        <span aria-hidden="true">&#9829;</span>
+      </button>
+    </div>
+  </article>
+</main>
