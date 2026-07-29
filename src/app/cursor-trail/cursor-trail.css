@@ -1,0 +1,102 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 80ms ease;
+}
+
+:host(.is-visible) {
+  opacity: 1;
+}
+
+.cursor-piece {
+  position: absolute;
+  top: -2px;
+  left: -3px;
+  width: 28px;
+  height: 33px;
+  transform-origin: 3px 3px;
+  will-change: transform;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(1px 1px 0 #000000);
+  transform-origin: 3px 3px;
+}
+
+path {
+  fill: #ef2b2d;
+  stroke: #050505;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.cursor-piece:nth-child(1) {
+  z-index: 10;
+}
+
+.cursor-piece:nth-child(2) {
+  z-index: 9;
+  opacity: 0.88;
+}
+
+.cursor-piece:nth-child(3) {
+  z-index: 8;
+  opacity: 0.78;
+}
+
+.cursor-piece:nth-child(4) {
+  z-index: 7;
+  opacity: 0.68;
+}
+
+.cursor-piece:nth-child(5) {
+  z-index: 6;
+  opacity: 0.58;
+}
+
+.cursor-piece:nth-child(6) {
+  z-index: 5;
+  opacity: 0.48;
+}
+
+.cursor-piece:nth-child(7) {
+  z-index: 4;
+  opacity: 0.38;
+}
+
+.cursor-piece:nth-child(8) {
+  z-index: 3;
+  opacity: 0.29;
+}
+
+.cursor-piece:nth-child(9) {
+  z-index: 2;
+  opacity: 0.21;
+}
+
+.cursor-piece:nth-child(10) {
+  z-index: 1;
+  opacity: 0.14;
+}
+
+:host(.is-interactive) svg {
+  transform: scale(1.12);
+}
+
+:host(.is-pressed) svg {
+  transform: scale(0.88);
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse), (hover: none) {
+  :host {
+    display: none;
+  }
+}

@@ -46,6 +46,11 @@
   padding: 0;
 }
 
+.custom-cursor-enabled,
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
 body {
   font-family: var(--font-mono);
   background-color: var(--bg-base);
