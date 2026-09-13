@@ -1,0 +1,19 @@
+.technical-skills + .technical-skills {
+  margin-top: var(--space-lg);
+}
+
+:host .card-title,
+:host .card-subtitle,
+:host .skill-tag {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  :host .section-title {
+    font-size: 2rem;
+  }
+
+  :host .brutal-card {
+    padding: var(--space-md);
+  }
+}
