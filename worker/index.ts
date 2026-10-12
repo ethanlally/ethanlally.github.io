@@ -2,10 +2,15 @@ import { onRequest as github } from './github';
 import { onRequest as spotify } from './spotify';
 import { onRequest as a2a } from './a2a';
 import { markdownFor } from './markdown';
+import { onRequest as reading } from './reading';
 
 export default {
   async fetch(request: Request, env: any, ctx: any): Promise<Response> {
     const url = new URL(request.url);
+
+    if (url.pathname === '/api/reading') {
+      return reading({ request, env });
+    }
     
     if (url.pathname === '/api/github') {
       return github({ request, env, waitUntil: ctx.waitUntil.bind(ctx) });

@@ -10,6 +10,20 @@
     }
   ],
   "paths": {
+    "/api/reading": {
+      "get": {
+        "summary": "Current public Hardcover reading activity",
+        "description": "Most recently updated public currently-reading book, cached for one hour per edge location. May return labeled last-known data during an upstream outage.",
+        "responses": {
+          "200": {
+            "description": "Book or empty shelf, with updatedAt and stale fields"
+          },
+          "503": {
+            "description": "Reading service unavailable or not configured"
+          }
+        }
+      }
+    },
     "/api/github": {
       "get": {
         "summary": "Recent public GitHub repositories",

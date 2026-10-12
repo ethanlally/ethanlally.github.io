@@ -21,7 +21,7 @@
     "not_found_handling": "single-page-application"
   },
   "build": {
-    "command": "NG_DISABLE_VERSION_CHECK=1 npm run build"
+    "command": "npm run build"
   },
   "compatibility_flags": [
     "nodejs_compat"

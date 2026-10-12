@@ -1,0 +1,42 @@
+<section class="brutal-card reading-card" aria-labelledby="reading-title">
+  <div class="reading-header">
+    <h3 id="reading-title" class="card-title">Currently Reading</h3>
+  </div>
+  @if (!isWorkerHosted) {
+    <p class="reading-status">
+      <a href="https://lally.lol/activity">View current reading on lally.lol</a>
+    </p>
+  } @else if (data(); as reading) {
+    @if (reading.book; as book) {
+      <a class="reading-content" [href]="book.bookUrl" target="_blank" rel="noopener noreferrer">
+        @if (book.coverUrl && failedCover() !== book.coverUrl) {
+          <img
+            class="book-cover"
+            [src]="book.coverUrl"
+            [alt]="'Cover of ' + book.title"
+            width="80"
+            height="120"
+            referrerpolicy="no-referrer"
+            (error)="failedCover.set(book.coverUrl)"
+          />
+        }
+        <div class="book-info">
+          <p class="book-title">{{ book.title }}</p>
+          <p class="book-author">{{ book.author }}</p>
+          <span class="book-source">Hardcover</span>
+        </div>
+      </a>
+    } @else if (!reading.error) {
+      <p class="reading-status">Not reading anything right now.</p>
+    }
+    @if (reading.stale) {
+      <p class="reading-status reading-notice">
+        Last known reading activity. Updates are temporarily unavailable.
+      </p>
+    } @else if (reading.error) {
+      <p class="reading-status">Reading updates are temporarily unavailable.</p>
+    }
+  } @else {
+    <p class="reading-status" role="status">Loading reading activity...</p>
+  }
+</section>

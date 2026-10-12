@@ -183,12 +183,16 @@ description: Contact and social links for Ethan Lally.
 `,
   '/activity': `---
 title: Ethan Lally activity
-description: Recent public GitHub activity for Ethan Lally.
+description: Recent public GitHub activity and current reading for Ethan Lally.
 ---
 
 # Recent activity
 
 Recent public repositories are available from [the GitHub API](https://lally.lol/api/github).
+
+## Currently Reading
+
+Current public reading activity is available from [the reading API](https://lally.lol/api/reading), refreshed on demand at most hourly per cached location. Data is provided by Hardcover.
 `,
 };
 
